@@ -1,0 +1,116 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Пусть $ \alpha \; - $ комплексный корень многочлена $ h(x) = x^3 - 3x + 1 $. Представьте элемент }
+\begin{gather*}
+	\dfrac{\alpha^4 - \alpha^3 + 4\alpha + 3}{\alpha^4 + \alpha^3 - 2\alpha^2 + 1} \in Q(\alpha)
+\end{gather*}
+
+\textit{в виде $ f(\alpha) $, где $ f(x)  \in Q[x] $ и $ \deg f(x) \leqslant 2 $. }
+Представим нашу дробь в виде:
+\begin{gather*}
+\frac{g(x)}{k(x)} = \dfrac{\alpha^4 - \alpha^3 + 4\alpha + 3}{\alpha^4 + \alpha^3 - 2\alpha^2 + 1}
+\end{gather*}
+Воспользуемся алгоритмом Евклида для нахождения НОД многочленов $ h(x), k(x) $:
+\begin{itemize}
+	\item $ k(x) = h(x)(x + 1) + (x^2 + 2x) $
+	
+	\item $ (x^3 - 3x + 1) = (x^2 + 2x)(x - 2) + (x + 1) $
+	
+	\item $ (x^2 + 2x) = (x + 1)(x + 1) - 1 $
+\end{itemize}
+\begin{gather*}
+	1 = (x + 1)(x + 1) - (x^2 + 2x) = (x + 1)((x^3 - 3x + 1) - (x^2 + 2x)(x - 2)) - (x^2 + 2x) =\\[2pt] = (x + 1)(x^3 - 3x + 1) - (x^2 - x - 1)(x^2 + 2x) = (x + 1)h(x) - (x^2 - x - 1)(k(x) - h(x)(x + 1)) = \\[2pt] =
+	(x^3 - x)h(x) + (-x^2 + x + 1)k(x)
+\end{gather*}
+\begin{gather*}
+	\frac{g(\alpha)}{k(\alpha)} = \frac{g(\alpha) \cdot 1}{k(\alpha)} = 
+	\frac{g(\alpha)\Big(n_1(\alpha)h(\alpha) + n_2(\alpha)k(\alpha)\Big)}{k(\alpha)} = n_2(\alpha)g(\alpha) =\\[2pt]  =  (-\alpha^2 + \alpha + 1)(\alpha^4 - \alpha^3 + 4\alpha + 3) = \\[2pt] = (-\alpha^3 + 2\alpha^2 - 3\alpha + 2)(\alpha^3 - 3\alpha + 1) - 10 \alpha^2 + 16\alpha + 1 = -10 \alpha^2 + 16\alpha + 1
+\end{gather*}
+\\ \\ \\
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Найдите минимальный многочлен для числа $ \sqrt{3} - \sqrt{5} $ над $ Q $.}
+\begin{gather*}
+	x = \sqrt{3} - \sqrt{5} \Rightarrow x^2 = 3 + 5 - 2\sqrt{15} \Rightarrow (x^2 - 8)^2 = 60 \Rightarrow \\
+	x^4 - 16 x^2 + 4 = 0
+\end{gather*}
+Корни: 
+\begin{gather*}
+	\pm \sqrt{3} \pm \sqrt{5}
+\end{gather*}
+Отметим, что множетили в разложение данного многочлена являются неприводимыми, откуда вытекает, что данная степень многочлена является минимальной.
+\newpage
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Пусть $ F - $ подполе в $ \mathbb{C} $, полученное присоединением к $ \mathbb{Q} $ всех комплексных корней многочлена $ x^4 + x^2 + 1 $ (то есть $ F - $ наименьшее подполе в $ \mathbb{C} $, содержащие $ \mathbb{Q} $ и все корни этого многочлена). \\[2pt] Найдите степень расширения $ [F: \mathbb{Q}] $. }  \\ \\ 
+$ x^4 + x^2 + 1 = (x^2 - x + 1)(x^2 + x + 1) = (x - \frac12 + \frac{\sqrt{3}}{2}i)(x - \frac12 - \frac{\sqrt{3}}{2}i)(x + \frac12 + \frac{\sqrt{3}}{2}i)(x + \frac12 - \frac{\sqrt{3}}{2}i) $ \\[3pt]
+Отметим, что данный нам многочлен является делителем $ x^6 - 1 $, поэтому все его корни  образуются из $ \frac12 + \frac{\sqrt{3}}2i $. Отсюда наименьшее подполе $ С $, содержащие все корни многочлена из условия есть $ \mathbb{Q}(\frac12 + \frac{\sqrt{3}}2i) $. Получаем степень поля 2, так как присоединенный элемент является корнем квадратного уравнения $ x^2 - x + 1 = 0 $.
+\\ \\ \\
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Пусть $ F = \mathbb{C}(x) \; - $ набор рациональных дробей и $ K = \mathbb{C}(y) $, где $ y = x + \frac1{x} $. Найдите степень расширения $ [F : K] $.} \\ \\
+Перепишем уравнение в более удобной для нас форме: $ x^2 - xy + 1 = 0 $, над полем $ C(y) $. Далее предположим, что $ x = \dfrac{g(y)}{h(y)} $. Заметим, что при $ x \to \pm i $ переменная $ y \to 0 $. То есть справа мы имеем одинаковые пределы, слева $ - $ разные. Отсюда $ x \notin C(y) $, степень расширения равна 2.
+
+
+
+
+
+\end{document}

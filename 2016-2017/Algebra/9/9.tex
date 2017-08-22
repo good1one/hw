@@ -1,0 +1,168 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\cfoot{}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Постройте явное поле $ \F_8 $ и составьте для него таблицы сложения и умножения.} \\ \\
+Отметим тот факт, что поле $ \F_8 \simeq \F_2[x] / x^3 \simeq $ остаткам при деление на $ x^3 + x^2 + 1 $, то есть многочлены степени не более чем 2 над полем 2. По данному отображению легко строим таблицу сложения и умножения:
+\begin{gather*}
+	\begin{array}{|c|c|c|c|c|c|c|c|c|}
+	\hline
+	+			& 0 & 1 & x & x + 1 & x^2 & x^2 + x & x^2 + 1 &  x^2 + x + 1\\
+	\hline
+	0			& 0 & 1 & x & x + 1 & x^2 & x^2 + x & x^2 + 1 &  x^2 + x + 1\\
+	\hline
+	1			& 1 & 0 & x + 1 & x & x^2 + 1 & x^2 + x + 1 & x^2 &  x^2 + x\\
+	\hline
+	x			& x & x + 1 & 0 & 1 & x^2 + x & x^2 & x^2 + x + 1 &  x^2 + 1\\
+	\hline
+	x + 1		& x + 1 & x & 1 & 0 & x^2 + x + 1 & x^2 + 1 & x^2 + x &  x^2\\
+	\hline
+	x^2			& x^2 & x^2 + 1 & x^2 + x & x^2 + x + 1 & 0 & x & 1 & x + 1\\
+	\hline
+	x^2 + x		& x^2 + x & x^2 + x + 1 & x^2 & x^2 + 1 & x & 0 & x + 1 & 1\\
+	\hline
+	x^2 + 1		& x^2 + 1 & x^2 & x^2 + x + 1 & x^2 + x & 1 & x + 1 & 0 & x\\
+	\hline
+	x^2 + x + 1	& x^2 + x + 1 & x^2 + x & x^2 + 1 & x^2 & x + 1 & 1 & x & 0\\
+	\hline
+\end{array}
+\end{gather*}
+\begin{gather*}
+	\begin{array}{|c|c|c|c|c|c|c|c|c|}
+	\hline
+	\times		& 0 & 1 & x & x + 1 & x^2 & x^2 + x & x^2 + 1 &  x^2 + x + 1\\
+	\hline
+	0			& 0 & 0 & 0 & 0 & 0 & 0 & 0 &  0\\
+	\hline
+	1			& 0 & 1 & x & x + 1 & x^2 & x^2 + x & x^2 + 1 &  x^2 + x + 1\\
+	\hline
+	x			& 0 & x & x^2 & x^2 + x & x^2 + 1 & 1 & x^2 &  x + 1\\
+	\hline
+	x + 1		& 0 & x + 1 & x^2 + x & x^2 + 1 & x + 1 & x^2 + x + 1 & x &  x^2\\
+	\hline
+	x^2			& 0 & x^2 & x^2 + 1 & 1 & x^2 + x + 1 & x & x + 1 &  x^2 + x\\
+	\hline
+	x^2 + x		& 0 & x^2 + x & 1 & x^2+x+1 & x & x + 1 & x^2 &  x^2 + 1\\
+	\hline
+	x^2 + 1		& 0 & x^2 + 1 & x^2 + x + 1 & x & x + 1 & x^2 & x^2 + x & 1\\
+	\hline
+	x^2 + x + 1	& 0 & x^2 + x + 1 & x + 1 & x^2 & x^2 + x & x^2 + 1 & 1 & x\\
+	\hline
+	\end{array}
+\end{gather*} \\ \\ \\
+
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Реализуем поле $ \F_9 $ в виде $ \Z_3[x]/(x^2 + 1) $. Перечислите в этой реализации все элементы данного поля, являющиеся пораждающими циклической группы $ \F_9^{\times} $.  } \\ \\
+Для начала построим таблицу умножения:
+\begin{gather*}
+	\begin{array}{|c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	\times	& 0 & 1 & 2 & x & x + 1 & x + 2 & 2x & 2x + 1 & 2x + 2\\
+	\hline
+	0		& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	\hline
+	1		& 0 & 1 & 2 & x & x + 1 & x + 2 & 2x & 2x + 1 & 2x + 2\\
+	\hline
+	2		& 0 & 2 & 1 & 2x & 2x + 2 & 2x + 1 & x & x + 2 & x + 1\\
+	\hline
+	x		& 0 & x & 2x & 2 & x + 2 & 2x + 2 & 1 & x + 1 & 2x + 1\\
+	\hline
+	x + 1	& 0 & x + 1 & 2x + 2 & x + 2 & 2x & 1 & 2x + 1 & 2 & x\\
+	\hline
+	x + 2	& 0 & x + 2 & 2x + 1 & 2x + 2 & 1 & x & x + 1 & 2x & 2\\
+	\hline
+	2x		& 0 & 2x & x & 1 & 2x + 1 & 1 + x & 2 & 2x + 2 & x + 2\\
+	\hline
+	2x + 1	& 0 & 2x + 1 & x + 2 & x + 1 & 2 & 2x & 2x + 2 & x & 1\\
+	\hline
+	2x + 2	& 0 & 2x + 2 & x + 1 & 2x + 1 & x & 2 & x + 2 & 1 & 2x\\
+	\hline
+	\end{array}
+\end{gather*}
+Отметим, что порядок пораждающих элементов равен 8, откуда получаем ответ: \\ $x + 1, x + 2, 2x + 1, 2x + 2$ 
+\\ \\ \\
+
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Проверьте, что многочлен $ x^2 + 1 $ и $ y^2 - y - 1 $ непреводимы над $ \Z_3 $, и установите явно изоморфизм между $ \Z_3[x]/(x^2 + 1) $ и $ \Z_3[y]/(y^2 - y - 1) $.} \\ \\
+$ x^2 + 1 = \{1, 2\} $ над $ \Z_3 \Rightarrow $ корней нет. $ y^2 - y - 1 = y^2 + 2y + 2 = (y + 1)^2 + 1 = \{1, 2\}$, так же без корней. \\[2pt]
+Построим таблицу умножения в $ \Z_3[y]/(y^2 - y - 1) $:
+\begin{gather*}
+	\begin{array}{|c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	\times	& 0 & 1 & 2 & y & y + 1 & y + 2 & 2y & 2y + 1 & 2y + 2\\
+	\hline
+	0		& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+	\hline
+	1		& 0 & 1 & 2 & y & y + 1 & y + 2 & 2y & 2y + 1 & 2y + 2\\
+	\hline
+	2		& 0 & 2 & 1 & 2y & 2y + 2 & 2y + 1 & y & y + 2 & y + 1\\
+	\hline
+	y		& 0 & y & 2y & y + 1 & 2y + 1 & 1 & 2y+2 & 2 & y + 2\\
+	\hline
+	y + 1	& 0 & y + 1 & 2y + 2 & 2y + 1 & 2 & y & y + 2 & 2y & 1\\
+	\hline
+	y + 2	& 0 & y + 2 & 2y + 1 & 1 & y & 2y+2 & 2 & y + 1 & 2y\\
+	\hline
+	2y		& 0 & 2y & y & 2y+2 & y +2  & 2 & y+1 & 1 & 2y+1\\
+	\hline
+	2y + 1	& 0 & 2y + 1 & y + 2 & 2 & 2y & y+1 & 1 & 2y+2 & y\\
+	\hline
+	2y + 2	& 0 & 2y + 2 & y + 1 & y+2 & 1 & 2y & 2x + 1 & y & 2\\
+	\hline
+	\end{array}
+\end{gather*}
+Для корректного определения изоморфизма, нам достаточно указать,  куда переходит $ 1 $ и $ x $. Учитываю порядки элементов получаем:
+\begin{gather*}
+\varphi(1) = 1 \qquad \varphi(x) = y + 1 
+\end{gather*}
+
+
+
+
+
+
+\end{document}

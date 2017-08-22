@@ -1,0 +1,157 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Выразите симметрический многочлен}
+\begin{gather*}
+f(x_1, x_2, x_3, x_4) = (x_1 + x_2)(x_1 + x_3)(x_1 + x_4)(x_2 + x_3)(x_2 + x_4)(x_3 + x_4)
+\end{gather*}
+\textit{через элементарные симметрические многочлены.} \\ \\
+Воспользуемся основной теоремой  симметрических многочленах. Старший член $ L(f) = x_1^3 x_2^2x_3^1x_4^0 $. Рассмотрим все наборы неотрицательных упорядоченных $ l_i $, такие что в сумме они дают $ 6 $: 
+\begin{align*}
+	(3, 3, 0, 0) \quad  
+	(3, 2, 1, 0) \quad
+	(3, 1, 1, 1) \quad
+	(2, 2, 2, 0) \quad
+	(2, 2, 1, 1)
+\end{align*}
+\begin{gather*}
+\text{Получаем } F(\sigma_1, \sigma_2, \sigma_3, \sigma_4) = 
+A_1 \sigma_1^{3 - 3}\sigma_2^{3 - 0}\sigma_3^{0 - 0}\sigma_4^{0} + 
+\sigma_1^{3 - 2}\sigma_2^{2 - 1}\sigma_3^{1 - 0}\sigma_4^{0} + 
+A_2 \sigma_1^{3 - 1}\sigma_2^{1 - 1}\sigma_3^{1 - 1}\sigma_4^{1} + \\[2pt] +
+\; A_3 \sigma_1^{2 - 2}\sigma_2^{2 - 2}\sigma_3^{2 - 0}\sigma_4^{0} + 
+A_4 \sigma_1^{2 - 2}\sigma_2^{2 - 1}\sigma_3^{1 - 1}\sigma_4^{1} = 
+A_1\sigma_2^3 + \sigma_1\sigma_2\sigma_3 + A_2 \sigma_1^2\sigma_4 + A_3 \sigma_3^2 + A_4\sigma_2\sigma_4
+\end{gather*}
+Получили функцию от четых переменных. Подставим туда произвольные $ x_i $ и составим систему. (подберем $ x_i $ такие, чтобы было попроще считать)
+\begin{enumerate}
+\item $ f(1, 1, 0, 1) = A_1 $
+\item $ f(1, 1, 1, 1) = 216A_1 + 96 + 16A_2 + 16A_3 + 6A_4 $
+\item $ f(1, 1, -1, -1) = -8A_1 - 2A_4 $
+\item $ f(1, 1, 1, 0) = 8A_1 + 9 + A_3 $
+\end{enumerate}
+Отсюда, $ A_1 = 0, \; A_2 = -1, \; A_3 = -1, \; A_4 = 0 \Rightarrow  F(\sigma_1, \sigma_2, \sigma_3, \sigma_4) = \sigma_1\sigma_2\sigma_3 - \sigma_1^2\sigma_4 - \sigma_3^2 $ \\ \\ \\
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Пусть элементы $ \alpha_1, \alpha_2, \alpha_3 $ - все комплексные корни многочлена $ 3x^3 + 2x^2 - 1 $. Найдите значение выражения }
+\begin{gather*}
+	\frac{\alpha_1\alpha_2}{\alpha_3} + \frac{\alpha_1\alpha_3}{\alpha_2} + \frac{\alpha_2\alpha_3}{\alpha_1}
+\end{gather*}
+$ \alpha_{i} - $ корни уравения $ x^3 + \frac23x^2 + 0 \cdot x - \frac13 = 0 $.
+Воспользуемся теоремой Виета: 
+\begin{enumerate}
+	\item $ \alpha_1 + \alpha_2 + \alpha_3 = -\frac23 $
+	\item $ \alpha_1\alpha_2 + \alpha_1\alpha_3 + \alpha_2\alpha_3 = 0 $
+	\item $ \alpha_1\alpha_2\alpha_3 = \frac13 $
+\end{enumerate} 
+Что понадобится нам в следующем:
+\begin{gather*}
+\frac{\alpha_1\alpha_2}{\alpha_3} + \frac{\alpha_1\alpha_3}{\alpha_2} + \frac{\alpha_2\alpha_3}{\alpha_1} = 
+\frac{\alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2}{\alpha_1\alpha_2\alpha_3} = 
+\frac{(\alpha_1 + \alpha_2 + \alpha_3)^2 - 2\alpha_1\alpha_2\alpha_3(\alpha_1 + \alpha_2 + \alpha_3)}{\alpha_1\alpha_2\alpha_3} = \\[2pt] = 
+\frac{0^2 - 2 \cdot \frac13 \cdot (-\frac23) }{\frac13} = \frac43
+\end{gather*}
+\newpage
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Найдите многчлен 4 степени, корнями которого являются число 1 и кубы всех комплексных корней  многочлена $ x^3 + x - 1 $. } \\ \\ 
+Воспользуемся теоремой Виета для данного нам трехчлена:
+\begin{enumerate}
+	\item $ \sigma_1(x_1, x_2, x_3) = 0 $
+	\item $ \sigma_2(x_1, x_2, x_3) = 1 $
+	\item $ \sigma_3(x_1, x_2, x_3) = 1 $
+\end{enumerate}
+Составим трехчлен, корнями которого будут кубы корней нашего трехчлена. И снова теорема Виета:
+\begin{enumerate}
+	\item $ \sigma_1^{'}(x_1^3, x_2^3, x_3^3) = x_1^3 + x_2^3 + x_3^3 = \sigma_1^3 - 3\sigma_1\sigma_2 + 3\sigma_3 = 3 $
+	\item $ \sigma_2^{'}(x_1^3, x_2^3, x_3^3) = x_1^3x_2^3 + x_1^3x_3^3 + x_2^3x_3^3 = \sigma_2^2 - 3\sigma_1\sigma_2\sigma_3 + 3\sigma_3^2 = 4 $
+	\item $ \sigma_3^{'}(x_1^3, x_2^3, x_3^3) = x_1^3x_2^3x_3^3 = \sigma_3^3 = 1 $ \\ \\[2pt]
+	$ \Rightarrow g(x) = x^3 - 3x^2 + 4x - 1 $
+\end{enumerate}
+Плюсом корнем так же должна быть 1, отсюда искомый многочлен 4 степени:
+\begin{gather*}
+	f(x) = (x - 1)g(x) = (x - 1)(x^3 - 3x^2 + 4x - 1) = x^4 - 4x^3 + 7x^2 - 5x + 1
+\end{gather*} \\ \\ \\
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Докажите, что не существует бесконечной последовательности одночленов от переменных $ x_1, \dots, x_n $, в которой каждый последующий член строго меньше предыдущего в лексекографическом порядке.} \\ \\ 
+Будем работать с индукцией. База $ - \; n = 1 $.  Количество членов ограничено степенью первого члена в последовательности. \\
+Переход. Снова смотрим на первый член. Мысленно делим наш одночлен на две части $ - \; x_1 $ и $ x_2, \dots, x_n $. Тогда все последующие члены будут состоять из $ x_1 $ в степени не более, чем начальная и убывающей последовательности из $ n - 1 $ элемента. И то, и другое ограничено из предположения индукции, отсюда $ - $ все ограничено, переход выполнен.
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,636 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\footnotesize Линейная алгебра и геометрия}
+\chead{}
+\rhead{\scriptsize ФКН НИУ ВШЭ, 2016/2017 учебный год, 1 курс ПМИ, Егерев Артем}
+\lfoot{\footnotesize Вариант 6}
+\cfoot{}
+\rfoot{\fbox{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{В пространстве $ \mathbb{R}^3 $ заданы два базиса: $ e = (e_1, e_2, e_3) $ и $ e' = (e'_1, e'_2, e'_3) $, где}
+\begin{align*}
+	e_1 = (-2, 2, 2) \quad
+	e_2 = (-2, 2, 1) \quad
+	e_3 = (1, 0, 2) \quad
+	e'_1 = (-3, 2, -1) \quad
+	e'_2 = (-3, 4, 4) \quad
+	e'_3 = (-1, 2, 4),
+\end{align*}
+\textit{И вектор $ v $, имеющий в базисе $ e $ координаты (-4, 3, 2). Найдите:}
+\begin{align*}
+\raggedleft
+	&\textit{а) матрицу перехода от базиса } e \textit{ к } e' \\
+	&\textit{б) координаты вектора } v \textit{ в новом базисе }
+\end{align*} \\
+
+\textsl{а)} 
+Обозначим $  C_{e \rightarrow e'} $ за $ C $
+\begin{gather*}
+	(e'_1,..., e'_n) = (e_1, ..., e_n) \cdot C \Rightarrow \\
+	\begin{pmatrix}
+	-3 & -3 & -1 \\
+	2 & 4 & 2 \\
+	-1 & 4 & 4 
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	-2 & -2 & 1 \\
+	2 & 2 & 0 \\
+	2 & 1 & 2 
+	\end{pmatrix}
+	\cdot C
+\end{gather*}
+Преобразованиями строк добьемся того, чтобы справа стояла единичная матрица:
+\begin{gather*}
+\stackrel{ row_{1} \div (-2) }{\longrightarrow}
+\begin{pmatrix}
+1 & 1 & -\frac{1}{2} & \vrule & \frac{3}{2} & \frac{3}{2} & \frac{1}{2} \\[2pt]
+2 & 2 & 0 & \vrule & 2 & 4 & 2 \\[2pt]
+2 & 1 & 2 & \vrule & -1 & 4 & 4 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} - 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 1 & -\frac{1}{2} & \vrule & \frac{3}{2} & \frac{3}{2} & \frac{1}{2} \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+2 & 1 & 2 & \vrule & -1 & 4 & 4 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{3} - 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 1 & -\frac{1}{2} & \vrule & \frac{3}{2} & \frac{3}{2} & \frac{1}{2} \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+0 & -1 & 3 & \vrule & -4 & 1 & 3 \\[2pt]
+\end{pmatrix}
+\stackrel{ swap 3 2 }{\longrightarrow}
+\begin{pmatrix}
+1 & 1 & -\frac{1}{2} & \vrule & \frac{3}{2} & \frac{3}{2} & \frac{1}{2} \\[2pt]
+0 & -1 & 3 & \vrule & -4 & 1 & 3 \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{2} \div (-1) }{\longrightarrow}
+\begin{pmatrix}
+1 & 1 & -\frac{1}{2} & \vrule & \frac{3}{2} & \frac{3}{2} & \frac{1}{2} \\[2pt]
+0 & 1 & -3 & \vrule & 4 & -1 & -3 \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{1} - row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & \frac{5}{2} & \vrule & -\frac{5}{2} & \frac{5}{2} & \frac{7}{2} \\[2pt]
+0 & 1 & -3 & \vrule & 4 & -1 & -3 \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{1} - \frac{5}{2}row_{3} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & 0 & \vrule & 0 & 0 & 1 \\[2pt]
+0 & 1 & -3 & \vrule & 4 & -1 & -3 \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} + 3row_{3} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & 0 & \vrule & 0 & 0 & 1 \\[2pt]
+0 & 1 & 0 & \vrule & 1 & 2 & 0 \\[2pt]
+0 & 0 & 1 & \vrule & -1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\end{gather*}
+Таким образом мы получаем: 
+\[
+C = 
+\begin{pmatrix}
+0 & 0 & 1 \\
+1 & 2 & 0 \\
+-1 & 1 & 1 \\
+\end{pmatrix}
+\]
+
+\textsl{б)}
+Нам известно:
+\begin{gather*}
+	\begin{pmatrix}
+	x_1 \\
+	\vdots \\
+	x_n \\
+	\end{pmatrix}
+	= C 
+	\begin{pmatrix}
+	x'_1 \\
+	\vdots \\
+	x'_n \\
+	\end{pmatrix}
+\end{gather*}
+\newpage
+\noindent Тогда для нахождения новых координат, найдем сперва $ C^{-1} $:
+\begin{gather*}
+\begin{pmatrix}
+0 & 0 & 1 \\[2pt]
+1 & 2 & 0 \\[2pt]
+-1 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\stackrel{ swap 2 1 }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & 0 & \vrule & 0 & 1 & 0 \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+-1 & 1 & 1 & \vrule & 0 & 0 & 1 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{3} + row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & 0 & \vrule & 0 & 1 & 0 \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+0 & 3 & 1 & \vrule & 0 & 1 & 1 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ swap 3 2 }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & 0 & \vrule & 0 & 1 & 0 \\[2pt]
+0 & 3 & 1 & \vrule & 0 & 1 & 1 \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} \div 3 }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & 0 & \vrule & 0 & 1 & 0 \\[2pt]
+0 & 1 & \frac{1}{3} & \vrule & 0 & \frac{1}{3} & \frac{1}{3} \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{1} - 2row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -\frac{2}{3} & \vrule & 0 & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+0 & 1 & \frac{1}{3} & \vrule & 0 & \frac{1}{3} & \frac{1}{3} \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{1} + \frac{2}{3}row_{3} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & 0 & \vrule & \frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+0 & 1 & \frac{1}{3} & \vrule & 0 & \frac{1}{3} & \frac{1}{3} \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} - \frac{1}{3}row_{3} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & 0 & \vrule & \frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+0 & 1 & 0 & \vrule & -\frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\[2pt]
+0 & 0 & 1 & \vrule & 1 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\end{gather*}
+Получаем:
+\begin{gather*}
+ \begin{pmatrix}
+x'_1 \\
+\vdots \\
+x'_n \\
+\end{pmatrix}
+= C^{-1}
+\begin{pmatrix}
+x_1 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\[2pt]
+-\frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\[2pt]
+1 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+-4 \\[2pt] 3 \\[2pt] 2
+\end{pmatrix}
+= 
+\begin{pmatrix}
+-3 \\[2pt] 3 \\[2pt] -4
+\end{pmatrix}
+\end{gather*}
+\newpage
+
+
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{а) Докажите, что существует единственное линейное отображение $ \phi: \mathbb{R}^5 \rightarrow \mathbb{R}^3 $, переводящее векторы}
+\begin{align*}
+	a_1 = (1, 0, -2, 0, 0) \quad a_2 = (-2, 1, 0, 2, 0) \quad a_3 = (-2, 0, 2, 0, 2) \quad a_4 = (-2, 0, 0, 1, 2) \quad a_5 = (-3, 2, -2, 0, 1)
+\end{align*}
+\textit{соответственно в вектора}
+\begin{align*}
+	b_1 = (1, 2, -12) \quad b_2 = (-4, 11, -9) \quad b_3 = (0, 0, 0) \quad b_4 = (-1, 7, -15) \quad b_5 = (-2, 12, -24)
+\end{align*}
+\textit{б) Найдите базис ядра и базис образа этого линейного отображения. Ответ запишите в стандартных базисах} \\ \\
+
+\textsl{а)} Проверим, являются ли  вектора $ a $  линейно независимыми:
+\begin{gather*}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+-2 & 1 & 0 & 2 & 0 \\
+-2 & 0 & 2 & 0 & 2 \\
+-2 & 0 & 0 & 1 & 2 \\
+-3 & 2 & -2 & 0 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{2} + 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+-2 & 0 & 2 & 0 & 2 \\
+-2 & 0 & 0 & 1 & 2 \\
+-3 & 2 & -2 & 0 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{3} + 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & -2 & 0 & 2 \\
+-2 & 0 & 0 & 1 & 2 \\
+-3 & 2 & -2 & 0 & 1 \\
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{4} + 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & -2 & 0 & 2 \\
+0 & 0 & -4 & 1 & 2 \\
+-3 & 2 & -2 & 0 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{5} + 3row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & -2 & 0 & 2 \\
+0 & 0 & -4 & 1 & 2 \\
+0 & 2 & -8 & 0 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{5} - 2row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & -2 & 0 & 2 \\
+0 & 0 & -4 & 1 & 2 \\
+0 & 0 & 0 & -4 & 1 \\
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{3} \div (-2) }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & -4 & 1 & 2 \\
+0 & 0 & 0 & -4 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{4} + 4row_{3} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & -4 & 1 \\
+\end{pmatrix}
+\stackrel{ row_{5} + 4row_{4} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & 0 & -7 \\
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{5} \div (-7) }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -2 & 0 & 0 \\
+0 & 1 & -4 & 2 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & 0 & 1 \\
+\end{pmatrix}	
+\end{gather*}
+Так как их 5 и они все линейно независимые $ \Rightarrow $ они будут являться базисом в пространстве $ \mathbb{R}^5 $, а значит (по теореме единственности линейного отображения от базиса) это отображение действительно  единственное.
+\\[3pt] 
+\textsl{б) } 
+Пользуясь тем, что $ \phi $ - линейна и тем, что $ a $ - это базис, получаем, что любой вектор $ v \in \mathbb{R}^5 $ представим в виде $ v = x_1a_1 + ... + x_5a_5 $ и при линейном отображение переходит соответственно в $ \phi(v) = x_1b_1 + ... + x_5b_5 $. \\[3pt]
+Если мы работаем с ядром, то $ \phi(v) = 0 \Rightarrow $:
+\begin{gather*}
+	(b_1, ..., b_5)
+	\begin{pmatrix}
+	x_1 \\
+	\vdots \\
+	x_5
+	\end{pmatrix}
+	 = 0
+\end{gather*}
+$ \Rightarrow $ для нахождения ядра нам нужно найти ФСР:
+\begin{gather*}
+\begin{pmatrix}
+1 & -4 & 0 & -1 & -2 \\[2pt]
+2 & 11 & 0 & 7 & 12 \\[2pt]
+-12 & -9 & 0 & -15 & -24 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} - 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & -4 & 0 & -1 & -2 \\[2pt]
+0 & 19 & 0 & 9 & 16 \\[2pt]
+-12 & -9 & 0 & -15 & -24 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{3} + 12row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & -4 & 0 & -1 & -2 \\[2pt]
+0 & 19 & 0 & 9 & 16 \\[2pt]
+0 & -57 & 0 & -27 & -48 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} \div 19 }{\longrightarrow}
+\begin{pmatrix}
+1 & -4 & 0 & -1 & -2 \\[2pt]
+0 & 1 & 0 & \frac{9}{19} & \frac{16}{19} \\[2pt]
+0 & -57 & 0 & -27 & -48 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{3} + 57row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & -4 & 0 & -1 & -2 \\[2pt]
+0 & 1 & 0 & \frac{9}{19} & \frac{16}{19} \\[2pt]
+0 & 0 & 0 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\end{gather*}
+Получаем $ (-26, -16, 0, 0, 19), (-17, -9, 0, 19, 0) $. При умножение на $ a_i $ как раз получаем базис ядра: $ (-51,  22,  14, -32,  19), (-37,  -9,  34,   1,  38) $ \\[1pt]
+ Из предыдущих рассуждений видно, что образ есть линейная оболочка от  $ \phi(a_i) \leftrightarrow b_i $, откуда получаем:
+\begin{gather*}
+\begin{pmatrix}
+1 & 2 & -12 \\
+-4 & 11 & -9 \\
+0 & 0 & 0 \\
+-1 & 7 & -15 \\
+-2 & 12 & -24 \\
+\end{pmatrix}
+\stackrel{ row_{2} + 4row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 19 & -57 \\
+0 & 0 & 0 \\
+-1 & 7 & -15 \\
+-2 & 12 & -24 \\
+\end{pmatrix}
+\stackrel{ row_{4} + row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 19 & -57 \\
+0 & 0 & 0 \\
+0 & 9 & -27 \\
+-2 & 12 & -24 \\
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{5} + 2row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 19 & -57 \\
+0 & 0 & 0 \\
+0 & 9 & -27 \\
+0 & 16 & -48 \\
+\end{pmatrix}
+\stackrel{ row_{2} \div 19 }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 1 & -3 \\
+0 & 0 & 0 \\
+0 & 9 & -27 \\
+0 & 16 & -48 \\
+\end{pmatrix}
+\stackrel{ row_{4} - 9row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 1 & -3 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 16 & -48 \\
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{5} - 16row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 2 & -12 \\
+0 & 1 & -3 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+\\[3pt]
+\end{gather*}
+(1, 2, -12), (0, 1, -3) - базис образа.
+\newpage
+
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Линейное отображение $ \varphi: \mathbb{R}^4 \rightarrow \mathbb{R}^3 $ имеет в базисах $ e = (e_1, e_2, e_3, e_4) $ и $ f = (f_1, f_2, f_3) $ матрицу} 
+\begin{align*}
+A = 
+\begin{pmatrix}
+-6 & -14 & -23 & 23 \\[2pt]
+9 & 3 & 3 & -3 \\[2pt]
+8 & 0 & -2 & 2
+\end{pmatrix}
+\end{align*}
+\textit{Найдите базисы простарнств $ \mathbb{R}^4 $ и $ \mathbb{R}^3 $, в которых матрица отображения $ \varphi $  имеет диагональный вид $ D $ c единиуами и нулями на диагонали. Выпишите эту матрицу и соответыующее матричное разложение $ A = C_1DC_2^{-1} $, где $ C_1, C_2 $ - невырожденнные матрицы(вычислять матрицу $ C_2^{-1} $ не нужно).} \\ \\ 
+
+
+Для начала найдем базис ядра данного линейного отображения: $ Av = 0 \Rightarrow$ надо просто найти ФСР $ A $: 
+\begin{gather*}
+\begin{pmatrix}
+-6 & -14 & -23 & 23 \\[2pt]
+9 & 3 & 3 & -3 \\[2pt]
+8 & 0 & -2 & 2 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{1} \div (-6) }{\longrightarrow}
+\begin{pmatrix}
+1 & \frac{7}{3} & \frac{23}{6} & -\frac{23}{6} \\[2pt]
+9 & 3 & 3 & -3 \\[2pt]
+8 & 0 & -2 & 2 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} - 9row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & \frac{7}{3} & \frac{23}{6} & -\frac{23}{6} \\[2pt]
+0 & -18 & -\frac{63}{2} & \frac{63}{2} \\[2pt]
+8 & 0 & -2 & 2 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{3} - 8row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & \frac{7}{3} & \frac{23}{6} & -\frac{23}{6} \\[2pt]
+0 & -18 & -\frac{63}{2} & \frac{63}{2} \\[2pt]
+0 & -\frac{56}{3} & -\frac{98}{3} & \frac{98}{3} \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} \div (-18) }{\longrightarrow}
+\begin{pmatrix}
+1 & \frac{7}{3} & \frac{23}{6} & -\frac{23}{6} \\[2pt]
+0 & 1 & \frac{7}{4} & -\frac{7}{4} \\[2pt]
+0 & -\frac{56}{3} & -\frac{98}{3} & \frac{98}{3} \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{3} + \frac{56}{3}row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & \frac{7}{3} & \frac{23}{6} & -\frac{23}{6} \\[2pt]
+0 & 1 & \frac{7}{4} & -\frac{7}{4} \\[2pt]
+0 & 0 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{1} - \frac{7}{3}row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & -\frac{1}{4} & \frac{1}{4} \\[2pt]
+0 & 1 & \frac{7}{4} & -\frac{7}{4} \\[2pt]
+0 & 0 & 0 & 0 \\[2pt]
+\end{pmatrix}
+\end{gather*}
+ФСР есть вектора $ m_3, m_4 = (-1, 7, 0, 4), (1, -7, 4, 0) $. Дополним их до базиса в $ \mathbb{R}^4 $ векторами $ m_1, m_2 = (1, 0, 0, 0), (0, 1, 0, 0) $.  Достаточно очевидно, что они являются линейно независимыми. \\[2pt]
+Отметим так же, что $ \varphi(m_1), \varphi(m_2) $ - будут являться базисом образа линейного отображения так как оба не лежат в ядре. (Если $ v = x_1\varphi(m_1) + x_2\varphi(m_2) = x'_1\varphi(m_1) + x'_2\varphi(m_2) \Rightarrow \varphi((x_1 - x'_1)m_1 + (x_2 - x'_2)m_2) = 0 \Rightarrow x_1 = x'_1, x_2 = x'_2$ ) \\[2pt]
+Дополним $ \varphi(m_1), \varphi(m_2) $ до базиса:
+\begin{gather*}
+Am_1 = (-6, 9, 8) \quad Am_2 = (-14, 3, 0) \\[2pt]
+\begin{pmatrix}
+-6 & 9 & 8 \\[2pt]
+-14 & 3 & 0 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{1} \div (-6) }{\longrightarrow}
+\begin{pmatrix}
+1 & -\frac{3}{2} & -\frac{4}{3} \\[2pt]
+-14 & 3 & 0 \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} + 14row_{1} }{\longrightarrow}
+\begin{pmatrix}
+1 & -\frac{3}{2} & -\frac{4}{3} \\[2pt]
+0 & -18 & -\frac{56}{3} \\[2pt]
+\end{pmatrix}
+\stackrel{ row_{2} \div (-18) }{\longrightarrow}
+\begin{pmatrix}
+1 & -\frac{3}{2} & -\frac{4}{3} \\[2pt]
+0 & 1 & \frac{28}{27} \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\stackrel{ row_{1} + \frac{3}{2}row_{2} }{\longrightarrow}
+\begin{pmatrix}
+1 & 0 & \frac{2}{9} \\[2pt]
+0 & 1 & \frac{28}{27} \\[2pt]
+\end{pmatrix}
+\\[3pt]
+\end{gather*}
+\\Перейдем к базисам $ m_1, \dots, m_4 $ в $ \mathbb{R}^4 $ и $ n_1 = \varphi(m_1), n_2 = \varphi(m_2), n_3 = (0, 0, 1) $ в $ \mathbb{R}^3 $ \\
+Нетрудно заметить, что именно в этом базисе матрица линейного перехода будет иметь вид:
+\begin{gather*}
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\[2pt]
+0 & 1 & 0 & 0 \\[2pt]
+0 & 0 & 0 & 0
+\end{pmatrix}
+\end{gather*}
+Так как для любого вектора $ v $ найдутся единственные $ x_1 ... x_4 : v = x_1m_1 + \dots + x_4m_4 $. $ \varphi(v) = x_1\varphi(m_1) + \dots + x_4\varphi(m_4) = x_1\varphi(m_1) + x_2\varphi(m_2) + 0\cdot n_3$. На пальцах, мы просто откидываем последние две координаты и получаем координаты в новом базисе. \\[2pt]
+Осталось найти матрицы перехода к новым базисам(это просто координаты новых базисов через старые записанные в столбец):
+\begin{gather*}
+C_2 = C_{\to m} = 
+\begin{pmatrix}
+1 & 0 & -1 & 1 \\[2pt]
+0 & 1 & 7 & -7 \\[2pt]
+0 & 0 & 0 & 4 \\[2pt]
+0 & 0 & 4 & 0
+\end{pmatrix}
+\quad
+C_1 = C_{\to n} = 
+\begin{pmatrix}
+-6 & -14 & 0 \\[2pt]
+9 & 3 & 0  \\[2pt]
+8 & 0 & 1
+\end{pmatrix}
+\end{gather*}
+\newpage
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Используя метод Лагранжа, для следующей квадратичной формы найдите нормальный вид и какую-нибудь приводящую к нему нетривиальную замену координат(выражение старых через новые):}
+\begin{align*}
+	Q(x_1, x_2, x_3) = 4x_1^2 + 5x_2^2 + x_3^2 - 8x_1x_2 - 4x_1x_3 + 4x_2x_3
+\end{align*} \\
+\begin{gather*}
+Q(x_1, x_2, x_3) 
+= 4x_1^2 + 5x_2^2 + x_3^2 - 8x_1x_2 - 4x_1x_3 + 4x_2x_3
+= (2x_1 - 2x_2 - x_3)^2 + x_2^2 = \\
+\text{ // } y_1 = 2x_1 - 2x_2 - x_3 \text{ // } \\ 
+= y_1^2 + x_2^2 = \\[2pt]
+\text{ // } t_1 =  y_1 \quad t_2 = x_2 \quad t_3 = x_3 \text{ // } \\
+= 1 \cdot t_1^2 + 1 \cdot t_2^2 + 0 \cdot t_3^2 = \\
+\end{gather*}
+Теперь нам следует выразить данные нам переменные через уже полученные, как и требуется в условие задачи:
+\begin{gather*}
+\begin{cases}
+&t_1 = y_1 = 2x_1 - 2x_2 - x_3 \\
+&t_2 = x_2 \\
+&t_3 = x_3
+\end{cases}
+\Rightarrow
+\begin{cases}
+&x_1 = \frac12(t_1 + 2x_2 + x_3) = \frac12 t_1 + t_2 + \frac12 t_3 \\
+&x_2 = t_2 \\
+&x_3 = t_3 
+\end{cases} \\[3pt]
+\begin{pmatrix}
+x_1 \\ x_2 \\ x_3
+ \end{pmatrix}
+= 
+C_{x \to t}
+\begin{pmatrix}
+t_1 \\ t_2 \\ t_3
+\end{pmatrix} 
+= 
+\begin{pmatrix}
+\frac12 & 1 & \frac12 \\[2pt]
+0 & 1 & 0 \\[2pt]
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+t_1 \\ t_2 \\ t_3
+\end{pmatrix} 
+\end{gather*}
+
+
+
+\end{document}

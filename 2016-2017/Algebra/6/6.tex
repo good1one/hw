@@ -1,0 +1,133 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Найти НОД многочленов}
+\begin{align*}
+f(x) = 2x^4  - 4x^3 - 3x^2 + 7x - 2 \qquad
+g(x) = 6x^3 + 4x^2 - 5x + 1
+\end{align*}
+\textit{а так же его линейное выражение через $ f(x) $ и $ g(x) $.} \\ \\
+Для нахождения НОДа воспользуемся теоремой Евклида:
+\begin{enumerate}
+	\item $ f(x) = (\frac13 x - \frac89 )g(x) + (\frac{20}9 x^2 + \frac{20}9x - \frac{10}9 ) $
+	\item $ g(x) = (\frac{27}{10}x - \frac9{10})(\frac{20}9 x^2 + \frac{20}9x - \frac{10}9 ) $
+\end{enumerate}
+Как делятся многлены достаточно очевидно. Получаем, НОД = $ \frac{20}9 x^2 + \frac{20}9x - \frac{10}9  $.
+\begin{gather*}
+	\text{НОД } =  f(x) - (\dfrac13 x - \dfrac89 )g(x)
+\end{gather*}
+\\ \\ \\
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Разложите многочлен $ x^6 + x^3 - 12 $ в произведение неприводимых в кольце $ \mathbb{C}[x] $ и в кольце $ \mathbb{R}[x] $.} \\ \\
+1. Начнем с $ \mathbb{R} $.
+\begin{gather*}
+	x^6 + x^3 - 12 = (x^3 + 4)(x^3 - 3) = (x + \sqrt[3]{4})(x^2 - \sqrt[3]{4}x + \sqrt[3]{16})(x - \sqrt[3]{3})(x^2 + \sqrt[3]{3}x + \sqrt[3]{9}) 
+\end{gather*}
+Причем очевидно, что дальше не раскладывается, так как $ D < 0 $. \\[3pt]
+2. Теперь к $ \mathbb{C} $. Здесь неприводимыми уже будут многочлены степени не больше 1, поэтому наши квадраты разложатся еще на 2 слогаемых:
+\begin{gather*}
+		x^6 + x^3 - 12 = (x + \sqrt[3]{4})(x - \sqrt[3]{3})(x^2 - \sqrt[3]{4}x + \sqrt[3]{16})(x^2 + \sqrt[3]{3}x + \sqrt[3]{9}) = \\[2pt]
+		(x + \sqrt[3]{4})(x - \sqrt[3]{3}) \cdot (x - \frac{1 - i\sqrt{3}}{\sqrt[3]{2}}) (x - \frac{1 + i\sqrt{3}}{\sqrt[3]{2}}) \cdot (x - \frac12 i \sqrt[3]{3}(i + \sqrt{3}))(x - \frac12 i \sqrt[3]{3}(i - \sqrt{3}))
+\end{gather*}
+Многочлен 6 степени - 6 корней, все отлично.
+\\ \\ \\
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Выясните, является ли число $ 5 + \sqrt{-5} $ элементом кольца $ \mathbb{Z}[\sqrt{-5}]. $} \\ \\
+$ Z[\sqrt{-5}] = \{ z : z = m + \sqrt{-5}n \quad m, \; n \in \mathbb{Z} \} $ \\
+Рассмотрим два элемента и докажем их необратимость:
+\begin{enumerate}
+	\item $ 1 - \sqrt{-5} $ : \\
+	Предположим, что существуют $ m, n \neq (0, 0) $, что $ (1 - \sqrt{-5})(m + \sqrt{-5}n) = 1 $, тогда
+	\begin{gather*}		
+	(1 - \sqrt{-5})(m + \sqrt{-5}n) = (m + 5n) + i\sqrt{5}(n - m) = 1 + 0i \Rightarrow n = m = \frac16  \notin \mathbb{Z} \Rightarrow \text{противоречие}
+	\end{gather*}
+	\item $ \sqrt{-5} $ : \\
+	Аналогично.
+	\begin{gather*}
+		\sqrt{-5}( m + \sqrt{-5}n) = -5n + \sqrt{5}mi = 1 + 0i \Rightarrow m = 0, n = -\frac15 \notin \mathbb{Z} \Rightarrow \text{противоречие}
+	\end{gather*}
+\end{enumerate} 
+Отметим, что $ 5 + \sqrt{-5} = \sqrt{-5}(1 - \sqrt{-5}) $, следовательно элемент раскладывается на 2 необратимых, следовательно не является простым. 
+\newpage
+
+
+
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Пусть $ R $ - евклидово кольцо с нормой $ N $. Докажите, что $ N $ принимает бесконечное число значений.} \\ \\
+Рассмотрим элемент $ m $, при котором норма достигает своего максимального значения (если такой существует). Дополнительно введем элемент $ n $ -  ненулевой необратимый. Такой найдется так как евкилидово кольцо это не поле. $ N(mn) > N(m) = max $, так как элемент $ n $ необратимый, теорема из лекции.
+Получаем, что $ N $ не может быть ограничено, то есть принимает бесконечное число значений.
+ 
+
+
+
+
+
+
+
+
+
+\end{document}

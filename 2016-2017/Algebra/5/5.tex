@@ -1,0 +1,207 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Найдите все обратимые элементы, все делители нуля и все нильпотентные элементы в кольце $ R = \{\begin{pmatrix}
+		a & 0 \\[2pt]
+		b & c
+	\end{pmatrix}\} \; | \; a, b, c \in \mathbb{R} $ с обычными операциями сложения и умножения. } \\ \\ 
+1. Матрица считается обратимой, когда $ det \neq 0 \Rightarrow ac \neq 0 \Rightarrow a \neq 0, c \neq 0$. В остальных случаях $ g^{-1} = 
+\begin{pmatrix}
+	\frac1{a} & 0 \\[2pt]
+	-\frac{b}{ac} & \frac1{c} 
+\end{pmatrix} $ $ - $ остается в группе.\\
+2. Элемент считается делителем нуля, если он является одновременно левым и правым делителем нуля. Пусть $ g - $ искомый делитель, $ h - $ ненулевая матрица.
+\begin{gather*}
+	g = \begin{pmatrix}
+		a & 0 \\[2pt]
+		b & c
+	\end{pmatrix}
+	\qquad 
+	h = \begin{pmatrix}
+		m & 0 \\[2pt]
+		n & k
+	\end{pmatrix} \\[2pt]
+	gh = \begin{pmatrix}
+	a & 0 \\[2pt]
+	b & c
+	\end{pmatrix}
+	\begin{pmatrix}
+	m & 0 \\[2pt]
+	n & k
+	\end{pmatrix}
+	\begin{pmatrix}
+	am & 0 \\[2pt]
+	bm + cn & ck
+	\end{pmatrix}
+	= 0
+\end{gather*}
+\begin{itemize}
+	\item $ \begin{pmatrix}
+	a \neq 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c \neq 0
+	\end{pmatrix} \Rrightarrow m = 0, k = 0 \Rightarrow cn = 0 \Rightarrow n = 0 \Rightarrow h - $ нулевая, значит такого быть не может.
+	\item  $ \begin{pmatrix}
+	a = 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c \neq 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 1, n = -\frac{b}{c}, k = 0 \Rightarrow $ такая нам подходит.
+	\item  $ \begin{pmatrix}
+	a \neq 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c = 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 0, n = 0, k = 1 \Rightarrow $ такая нам так же подходит.
+	\item  $ \begin{pmatrix}
+	a = 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c = 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 0, n = 0, k = 1 \Rightarrow $ такая нам так же подходит.
+\end{itemize}
+Таким образом нашли все матрицы, являющиеся левыми нулями: $ \begin{pmatrix}
+	a & 0 \\[2pt]
+	b & c
+\end{pmatrix} $, где $ a, c $ не равны нулю одновременно. Теперь проверим, что данные матрицы являются и правыми нулями так же.
+\begin{gather*}
+	hg = \begin{pmatrix}
+	m & 0 \\[2pt]
+	n & k
+	\end{pmatrix}
+	\begin{pmatrix}
+	a & 0 \\[2pt]
+	b & c
+	\end{pmatrix} = 
+	\begin{pmatrix}
+	am & 0 \\[2pt]
+	an + bk & ck
+	\end{pmatrix}
+	= 0
+\end{gather*}
+\begin{itemize}
+	\item  $ \begin{pmatrix}
+	a = 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c \neq 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 1, n = 0, k = 0 \Rightarrow $ такая нам подходит.
+	\item  $ \begin{pmatrix}
+	a \neq 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c = 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 0, n = -\frac{b}{a}, k = 1 \Rightarrow $ такая нам подходит.
+	\item  $ \begin{pmatrix}
+	a = 0 & 0 \\[2pt]
+	b \in \mathbb{R} & c = 0
+	\end{pmatrix} \Rightarrow $ подберем такую матрицу $ h \; : \; m = 1, n = 1, k = 0 \Rightarrow $ такая нам подходит.
+\end{itemize}
+3. Элемент $ g $ является нильпотентным, если $ g^{n} = 0 $.  Перемножая матрицы в предидущих пунктах мы уже получали, что при перемножение $ n $ раз нижнетреугольных матриц в клетке $ (1, 1) $ получается $ a^n $, в $ (2, 2) $ $ c^{n} $ $ \Rightarrow a^{n} = 0, c^{n} = 0 \Rightarrow a = 0, c = 0 $.
+\begin{gather*}
+	g^2 = \begin{pmatrix}
+	a & 0 \\[2pt]
+	b & c
+	\end{pmatrix}
+	\begin{pmatrix}
+	a & 0 \\[2pt]
+	b & c
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+	a^2 & 0 \\[2pt]
+	b(a + c) & c^2
+	\end{pmatrix} = 0 \Rightarrow \text{ подходят все матрицы вида}
+	\begin{pmatrix}
+	0 & 0 \\[2pt]
+	b \in \mathbb{R} & 0
+	\end{pmatrix}
+\end{gather*}  
+\newpage
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Приведите пример идеала в кольце $ Z[x] $, не являющегося главным.} \\ \\
+В качестве идеала возьмем $ \{(f, g) = xf(x) + 2g(x), \; f, g \in \mathbb{Z}[x] \} $ - множество многочленов с четным свободным членом (достаточно очевидно что этот идеал не является полным и отличен от нулевого). \\[2pt]
+Стоит отметить, что данное множество замкнуто относительно операций сложения и умножения. При сложение, сумма четных свободных членов - четна. При умножение  итоговый свободный член есть произведение свободных членов, тоже четный. Отсюда, это действительно идеал. \\[2pt]
+При перемножение многочлена с многочленом из $ Z[x] $ как с левой, так и с правой стороны, свободный член аналочино получается четным, то есть попадает в идеал. \\[2pt]
+Докажем тот факт, что этот идеал не является главным.  Пусть $ (f, g) = \{h\} \Rightarrow x \; \vdots \; h, \; 2 \; \vdots \; h $ (так как $ f, g - $ произвольные). Отсюда $ h $ является $ \pm 2, \pm 1 $. $ \pm 1 $ он быть не может, так как этот элемент пораждает вообще все многочлены. $ \pm 2 $ не может так как это многочлены, где все коэффиценты четны, что заметно уже чем наше множество (к примеру многочлен $ 3x + 2$ уже туда не попадет).
+\\ \\ \\
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Найдите размерность $ \mathbb{R}-$алгебры  $ \mathbb{R}/(x^3 - x^2 + 2) $.} \\ \\
+Из условия, нам дано фактор кольцо $ R[x] $ по идеалу $ x^3 - x^2 + 2 $. Воспользуемся теоремой о гомоморфизме колец: элементами факторкольца $ \mathbb{R}[x]/(x^3 - x^2 + 2) $ будут остатки от деления многочленов на $ x^3 - x^2 + 2 $(так как $ x^3 - x^2 + 2 $ есть ядро некого гомоморфизма). Получаем $ \mathbb{R}[x]/(x^3 - x^2 + 2) \simeq \{P(x)\} $, где $ P(x) - $ есть остаток от деления на наш многочлен, многочлен степени не более 2, причем достаточно очевидно, что все многочлены степени не выше 2 туда попадут. Базис в таком множестве: $ (1, x, x^2) \Rightarrow $ размерность $ = $ 3.
+\\ \\ \\ 
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Пусть $ F - $ поле, $ R - $ кольцо и $ \varphi: F \to R - $ гомоморфизм колец. Докажите, что либо $ \varphi(x) = 0 $ при всех $ x \in F $, либо $ Im \; \varphi \simeq F $.}  \\ \\
+Воспольщуемся теоремой о гомоморфизме колец: $ Im \;\varphi \simeq F/Ker \;\varphi $. Здесь стоит отметить, что любое поле является простым кольцом, откуда следует что $ Ker \; \varphi \; - $ несобственный идеал. Откуда:
+\begin{gather*}
+\left[
+	\begin{gathered}
+		Ker \; \varphi = 0 \Rightarrow Im \; \varphi \simeq F/Ker \; \varphi \simeq F/ \{0\} \simeq F  \\[2pt]
+		Ker \; \varphi = F \Rightarrow Im \; \varphi \simeq F/Ker \; \varphi \simeq F/F \simeq \{0\}
+	\end{gathered}
+\right.
+\end{gather*}
+Посдедний случай означает, что размер отображения $ \varphi $ равен 1, откуда следует, что все отображение будет в $ 0 $, так как $ \varphi(0) = 0 $.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

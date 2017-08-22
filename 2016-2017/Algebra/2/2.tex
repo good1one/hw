@@ -1,0 +1,240 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[english, russian]{babel}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+	left=25mm,right=25mm,%
+	bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Егерев Артем}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+\begin{document}
+\textbf{\large Задача 1}
+\medskip\hrule\medskip
+\textit{Найдите все левые смежные классы и все правые смежные классы группы $ A_4 $ по подгруппе $ H = \;  \langle\sigma\rangle $, где $ \sigma = \begin{pmatrix}
+	1 & 2 & 3 & 4 \\[2pt]
+	2 & 1 & 4 & 3
+	\end{pmatrix} $. Является ли подгруппа $ H $ нормальной в группе $ A_4 $? } \\ \\ 
+Для начала определим нашу подгруппу $ H $:
+\begin{align*}
+&b_1 = 
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\[2pt]
+1 & 2 & 3 & 4
+\end{pmatrix}  = id \\
+&b_2 = 
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\[2pt]
+2 & 1 & 4 & 3
+\end{pmatrix} \\
+&b_3 = 
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\[2pt]
+1 & 2 & 3 & 4
+\end{pmatrix} = b_1
+\end{align*}
+Отсюда, группа $ H $ состоит всего из двух элементов. Рассмотрим группу $ A_4 $:
+\begin{align*}
+&a_{1} = ( 1, 2, 3, 4 ) \quad 
+a_{2} = ( 1, 3, 4, 2 ) \quad 
+a_{3} = ( 1, 4, 2, 3 ) \quad  \\
+&a_{4} = ( 2, 1, 4, 3 ) \quad 
+a_{5} = ( 2, 3, 1, 4 ) \quad 
+a_{6} = ( 2, 4, 3, 1 ) \quad  \\
+&a_{7} = ( 3, 1, 2, 4 ) \quad 
+a_{8} = ( 3, 2, 4, 1 ) \quad 
+a_{9} = ( 3, 4, 1, 2 ) \quad  \\
+&a_{10} = ( 4, 1, 3, 2 ) \quad 
+a_{11} = ( 4, 2, 1, 3 ) \quad 
+a_{12} = ( 4, 3, 2, 1 ) \quad
+\end{align*}
+Левый класс  для элемента $ b_1 $ тривиальна и равна просто $ A $. Левый класс относительно элемента $ b_2 $ : $ \{ c_i \; : \; c_i = b_2 \circ a_i \}  $
+\begin{align*}
+&c_{1} = ( 2, 1, 4, 3 ) \quad 
+c_{2} = ( 2, 4, 3, 1 ) \quad 
+c_{3} = ( 2, 3, 1, 4 ) \quad  \\
+&c_{4} = ( 1, 2, 3, 4 ) \quad 
+c_{5} = ( 1, 4, 2, 3 ) \quad 
+c_{6} = ( 1, 3, 4, 2 ) \quad  \\
+&c_{7} = ( 4, 2, 1, 3 ) \quad 
+c_{8} = ( 4, 1, 3, 2 ) \quad 
+c_{9} = ( 4, 3, 2, 1 ) \quad  \\
+&c_{10} = ( 3, 2, 4, 1 ) \quad 
+c_{11} = ( 3, 1, 2, 4 ) \quad 
+c_{12} = ( 3, 4, 1, 2 ) \quad
+\end{align*} 
+Аналогично правый класс для элемента $ b_1 $ тривиален. Для элемента $ b_2 $ : $ \{ d_i \; : \; d_i = a_i \circ b_2 \}  $
+\begin{align*}
+&d_{1} = ( 2, 1, 4, 3 ) \quad 
+d_{2} = ( 3, 1, 2, 4 ) \quad 
+d_{3} = ( 4, 1, 3, 2 ) \quad  \\
+&d_{4} = ( 1, 2, 3, 4 ) \quad 
+d_{5} = ( 3, 2, 4, 1 ) \quad 
+d_{6} = ( 4, 2, 1, 3 ) \quad  \\
+&d_{7} = ( 1, 3, 4, 2 ) \quad 
+d_{8} = ( 2, 3, 1, 4 ) \quad 
+d_{9} = ( 4, 3, 2, 1 ) \quad  \\
+&d_{10} = ( 1, 4, 2, 3 ) \quad 
+d_{11} = ( 2, 4, 3, 1 ) \quad 
+d_{12} = ( 3, 4, 1, 2 ) \quad
+\end{align*}
+Отсметим, что для элемента, к примеру 7, $ gH \neq Hg $. А это, из утверждения, доказанного на лекции, дает нам, что подгруппа $ H $  не является нормальной.
+\newpage
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+\textbf{\large Задача 2}
+\medskip\hrule\medskip
+\textit{Пусть $ SL_2 $ группа всех целочисленный $ (2 \times 2) $ матриц с определителем 1. Докажите, что множество}
+\begin{gather*}
+H = \{ \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} \in 
+SL_2(\mathbb{Z}) | a \equiv d \equiv 1 \; (mod \; 3) \; and \; b \equiv c \equiv 0 \; (mod \; 3) \}
+\end{gather*}
+является нормальной подгруппой в $ SL_2(\mathbb{Z}) $. \\ \\
+Сначала докажем, что это подгруппа, для этого нужно проверить лежит ли произведение в этой подгруппе, лежит ли там обратный, а так же нейтральный элемент:\\
+\begin{gather*}
+\begin{pmatrix}
+c_1 & c_2 \\
+c_3 & c_4
+\end{pmatrix}
+= 
+\begin{pmatrix}
+a_1 & a_2 \\
+a_3 & a_4
+\end{pmatrix}
+\begin{pmatrix}
+b_1 & b_2 \\
+b_3 & b_4
+\end{pmatrix}
+\end{gather*}
+Тогда:
+\begin{align*}
+&c_1 = a_1 b_1 + a_2 b_3 \equiv a_1b_1 \equiv 1 \; mod \; 3 \\
+&c_2 = a_1 b_2 + a_2 b_4 \equiv 0 + 0 \equiv 0 \; mod \; 3 \\
+&c_3 = a_3 b_1 + a_4 b_3 \equiv a_3b_1 \equiv 1 \; mod \; 3 \\ 
+&c_4 = a_3 b_2 + a_4 b_4 \equiv 0 + 0 \equiv 0 \; mod \; 3 \\
+\end{align*}
+\begin{gather*}
+\begin{pmatrix}
+c_1 & c_2 \\
+c_3 & c_4
+\end{pmatrix}^{-1} = 
+\begin{pmatrix}
+c_4 & -c_2 \\
+-c_3 & c_1
+\end{pmatrix}
+\end{gather*}
+\begin{align*}
+&c_1 \equiv c_4 \equiv 1 \; mod \; 3 \\
+&c_2 \equiv c_3 \equiv -c_3 \equiv -c_3  \equiv 0 \; mod \; 3 \\
+\end{align*}
+\begin{gather*}
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\quad 
+1 \equiv 1 \; mod \; 3 
+\quad 0 \equiv 0 \; mod \; 3
+\end{gather*}
+Доказали. При этом обратная матрца ищется при помощи формулы Крамера. Как было показано на лекции, нам достаточно доказать, что $ shs^{-1} \in H $ для всех $ s \in SL_2$ и $ h \in H$. 
+\begin{gather*}
+s = \begin{pmatrix}
+a_1 & a_2 \\
+a_3 & a_4
+\end{pmatrix}
+\quad
+h =  \begin{pmatrix}
+b_1 & b_2 \\
+b_3 & b_4
+\end{pmatrix} \quad
+s^{-1} = \begin{pmatrix}
+a_4 & -a_2 \\
+-a_3 & a_1
+\end{pmatrix} \quad 
+\end{gather*}
+При этом $ a_1 a_4 - a_2 a_3 = 1, \; b_1 \equiv b_4 \equiv 1 \; and \; b_2 \equiv b_3 \equiv 0 \; mod \; 3 $. Пусть 
+\begin{gather*}
+shs^{-1} = \begin{pmatrix}
+d_1 & d_2 \\ 
+d_3 & d_4
+\end{pmatrix}
+\end{gather*}
+Тогда:
+\begin{align*}
+&d_1 = (a_1b_1 + a_2b_3)a_4 - (a_1b_2 + a_2b_4)a_3 \equiv a_1a_4b_1 - a_2a_3b_4 \equiv 1 \; mod \; 3 \\
+&d_2 = -(a_1b_1 + a_2b_3)a_2 + (a_1b_2 + a_2b_4)a_1 \equiv -a_1a_2b_1 + a_1a_2b_4 \equiv 0 \; mod \; 3 \\
+&d_3 = (a_3b_1 + a_4b_3)a_4 - (a_3b_2 + a_4b_4)a_3 \equiv a_3a_4b_1 - a_3a_4b_4 \equiv 0 \; mod \; 3 \\
+&d_4 = -(a_3b_1 + a_4b_3)a_2 + (a_3b_2 + a_4b_4)a_1 \equiv -a_3a_2b_1 + a_1a_4b_4 \equiv 1 \; mod \; 3 
+\end{align*}
+$ \Rightarrow shs^{-1} \in H $ \newpage
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+\textbf{\large Задача 3}
+\medskip\hrule\medskip
+\textit{Найдите все гомоморфизмы из группы $ \mathbb{Z}_{12} $ в группу $ \mathbb{Z}_{16} $.} \\ \\ 
+Пусть $ \varphi : \mathbb{Z}_{12} \to \mathbb{Z}_{16}$. Обозначим $ \varphi(1) $ за  $ \gamma $. Тогда: 
+\begin{gather*}
+	0 = \varphi(0) = \varphi(12) = 12\gamma \Rightarrow 12\gamma \equiv 0 \; mod \;16 
+\end{gather*}
+Нужно заметить, что наше отображение задается единственным числом $ \gamma $, так как имея его вычисляем: $ \varphi(x) = x \varphi(1) = x\gamma $. Из формулы выше, следует, что $ \gamma \; \vdots \; 4$, а таких, различных по модулю 16 : $ \{0, 4, 8, 12\} $, то есть всего 4 штуки. Так же нам нужно проверить, что данная операция действительно является гомоморфизмом, то есть:
+\begin{gather*}
+x \equiv x' \; mod \; 12 \; \Rightarrow \varphi(x) \equiv \varphi (x') \; mod \; 16 \; \\
+x \equiv x' \; mod \; 12 \Rightarrow x - x' \; \vdots \; 12 \quad and \quad \varphi(1) \; \vdots \; 4 \\
+\varphi(x) - \varphi(x') = (x - x')\varphi(1) \equiv 0 \; mod \; 16 \;  
+\end{gather*} \\ \\ \\
+
+
+
+%%%----------%%%----------%%%----------%%%----------%%%
+
+
+\textbf{\large Задача 4}
+\medskip\hrule\medskip
+\textit{Перечислите все, с точностью до изоморфизма группы, каждая из которых изоморфна любой своей неединичной подгруппе. } \\ \\
+Рассмотрим несколько вариантов. $ G $ бесконечна. Возьмем произвольный элемент $ g \in G $. Тогда $ H = \langle g \rangle $ будет являться бесконечной циклической группой и будет равномощно $ \mathbb{Z} $. Отсюда $ G \simeq \mathbb{Z} $.  Так же нужно отметить, что все подгруппы в $ \mathbb{Z} $ имеют вид $ \Rightarrow k\mathbb{Z} \simeq \mathbb{Z}$.\\[2pt]
+$ G $ конечна. $ G \simeq \mathbb{Z}_n $. Заметим, что в данном случае  любая подгруппа будет иметь мощность меньше чем $ G $, или совпадать с ней, причем совпадение бывает в том и только в том случае, когда $ n \; -$ есть простое число. Очевидно, что когда множества совпадают, то они изоморфны.
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

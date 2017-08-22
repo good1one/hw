@@ -1,0 +1,180 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[english, russian]{babel}
+
+
+\usepackage{tikz}
+\newcommand{\titlebox}[1]{
+	\begin{center}
+		\begin{tikzpicture}
+		\node[align=center,draw, text width=\textwidth,inner sep=3mm] (titlebox)%
+		{\textsc{\small БПМИ - 167}\\[\baselineskip]\textmd{\huge #1}};
+		\end{tikzpicture}
+	\end{center}
+}
+
+\title{}
+\date{Егерев Артем, БПМИ-167}
+\author{Домашняя работа по дискретной математике 17}
+
+\begin{document}
+\begin{flushright}
+	Егерев Артем \\
+	Домашнее задание №17 \\
+\end{flushright}
+\textbf{Задача 1}
+\medskip\hrule\medskip
+\textsl{
+Рассмотрим бесконечные последовательности из 0, 1, 2, в которых никакая цифра не встречается два раза подряд. Какова мощность множества таких последовательностей?} \\ \\
+\textit{Решение:}  На первом месте может стоять одна из трех цифр: $\{0, 1, 2\}$ \\
+Если это 2, то на 2-ю позицию у нас ставиться уже одна из двух оставшихся цифр, а именно $\{0, 1\}$. На 3-ю мы можем поставить снова одну из двух оставшихся соответственно. Приведем явную биекцию данных последовательностей $our_i$ с множеством бесконечных двоичных последовательностей $bin_i$:  $our_i[2] = bin_i[1]$, а далее 0 будет значить меньшее число из двух оставшихся, 1 соответсвенно большее. $\Rightarrow \text{OUR}_{[2]} \sim 2^{\mathbb{N}}$.\\
+Аналогично с $\text{OUR}_{[0]}$ и $\text{OUR}_{[1]} \Rightarrow \text{OUR} \sim 3 \cdot 2^{\mathbb{N}} \sim 2^{\mathbb{N}}$ - континум.  
+\\ \\ \\ 
+
+$\$
+\textbf{Задача 2} 
+\medskip\hrule\medskip
+\textsl{
+Докажите, что множество отношений эквивалентности на множестве натуральных чисел имеет мощность конти нум.} \\ \\
+\textit{Решение:}  Множество всех подмножеств на натуральных числах имеет мощность $2^{\mathbb{N}}$. Каждое множество натуральных чисел, разделенных на 2 класса эквивалентности 0 и 1 (в данном случае это будет подмножестовом искомого множества  $X$)
+однозачно задается множеством тех элементов, которым сопоставлена 1 $\Rightarrow$ оно не менее, чем континуально. \\
+С другой стороны, $X$ является подмножеством всех бинарных отношений из $\mathbb{N}$ в $\mathbb{N}$, что равномощно $2^{\mathbb{N} \times \mathbb{N}} \sim 2^{\mathbb{N}}$ - имеет мощность континум. \\
+Отсюда, можем сказать, что множество отношений эквивалентности на натуральных числах имеет мощность континум.
+\\ \\ \\ \\
+
+\textbf{Задача 3}
+\medskip\hrule\medskip
+\textsl{
+Найдите мощность множества отношений эквивалентности, определенных на множестве действительных чисел.} \\ \\
+\textit{Решение:}  Множество всех подмножеств на натуральных числах имеет мощность $2^{\mathbb{R}}$. Каждое множество действительных чисел, разделенных на 2 класса эквивалентности 0 и 1 (в данном случае это будет подмножестовом искомого множества  $X$)
+однозачно задается множеством тех элементов, которым сопоставлена 1 $\Rightarrow$ оно имеет мощность не менее, чем $2^{\mathbb{R}}$. \\
+С другой стороны, $X$ является подмножеством всех бинрных отношений из $\mathbb{R}$ в $\mathbb{R}$, что равномощно $2^{\mathbb{R} \times \mathbb{R}} \sim 2^{\mathbb{R}}$. \\
+Отсюда, можем сказать, что множество отношений эквивалентности на действительных числах имеет мощность $2^{\mathbb{R}}$.
+\\ \\ \\
+
+
+\textbf{Задача 4}
+\medskip\hrule\medskip
+\textsl{
+Запишите ДНФ, которая равна булевой функции}
+$$
+(x_1 \vee x_2) \wedge (\overline{x_1} \vee x_3) \wedge (\overline{x_2} \vee x_4) \vee ... \vee (\overline{x_7} \vee x_9)
+$$ \\
+\textit{Решение:} Найдем все знания $x_i$, при которых функция принимает значение 1. Для решения задачи произведем умный перебор. Разделим наше выражение на $(x_1 \vee x_2)$ и $(\overline{x_1} \vee x_3) ... (\overline{x_7} \vee x_9)$. Для начала поработаем со второй частью: 
+\begin{equation*}
+\begin{cases}
+$$
+x_1 \rightarrow x_3 \\
+x_3 \rightarrow x_5 \\
+x_5 \rightarrow x_7 \\
+x_7 \rightarrow x_9 \\
+x_2 \rightarrow x_4 \\
+x_4 \rightarrow x_6 \\
+x_6 \rightarrow x_8 
+$$
+\end{cases}
+\end{equation*}
+Так как производиться глобальная конъюнкция, значит значение каждой скобки 1. Если начать перебирать варианты, то можно заметить, что если в строке матрицы встретилась 1, то все последующие цифры будут так же 1, для сохранения истинности.
+\begin{center}
+	\begin{tabular}{crrrrr}
+		$x_1$ & $x_3$ & $x_5$ & $x_7$ & $x_9$ \\
+		\hline
+		0 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 1 & 1 \\
+		0 & 0 & 1 & 1 & 1 \\
+		0 & 1 & 1 & 1 & 1 \\
+		1 & 1 & 1 & 1 & 1 \\
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{crrrrr}
+		$x_2$ & $x_4$ & $x_6$ & $x_8$\\
+		\hline
+		0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 1 \\
+		0 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 1 \\
+		1 & 1 & 1 & 1 \\
+	\end{tabular}
+\end{center}
+Приняв в рассмотрений первое выражение ($x_1 \vee x_2 = 1 $), получаем, что данная функция истинна только при 10 значениях: 6 комбинация первой матрицы на 5 кобинаций второй и 5 комбинация второй матрицы на 5 комбинаций первой. Теперь, когда мы знаем значения на которых функция принимает 1, без труда составляем ДНФ:\\
+\begin{gather*}
+	(x_1 \wedge \overline{x_2} \wedge x_3 \wedge \overline{x_4} \wedge x_5 \wedge \overline{x_6} \wedge x_7 \wedge \overline{x_8} \wedge x_9) \vee \\
+	(x_1 \wedge \overline{x_2} \wedge x_3 \wedge \overline{x_4} \wedge x_5 \wedge \overline{x_6} \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(x_1 \wedge \overline{x_2} \wedge x_3 \wedge \overline{x_4} \wedge x_5 \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(x_1 \wedge \overline{x_2} \wedge x_3 \wedge x_4 \wedge x_5 \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(x_1 \wedge x_2 \wedge x_3 \wedge x_4 \wedge x_5 \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(\overline{x_1} \wedge x_2 \wedge \overline{x_3} \wedge x_4 \wedge \overline{x_5} \wedge x_6 \wedge \overline{x_7} \wedge x_8 \wedge \overline{x_9}) \vee \\
+	(\overline{x_1} \wedge x_2 \wedge \overline{x_3} \wedge x_4 \wedge \overline{x_5} \wedge x_6 \wedge \overline{x_7} \wedge x_8 \wedge x_9) \vee \\
+	(\overline{x_1} \wedge x_2 \wedge \overline{x_3} \wedge x_4 \wedge \overline{x_5} \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(\overline{x_1} \wedge x_2 \wedge \overline{x_3} \wedge x_4 \wedge x_5 \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) \vee \\
+	(\overline{x_1} \wedge x_2 \wedge x_3 \wedge x_4 \wedge x_5 \wedge x_6 \wedge x_7 \wedge x_8 \wedge x_9) 
+\end{gather*}
+\\ \\ \\
+
+
+\textbf{Задача 5}
+\medskip\hrule\medskip
+\textsl{
+Докажите полноту системы связок, состоящей из одной связки штрих Шеффера $x | y = \neg(x \wedge y)$} \\ \\
+\textit{Решение:} Зная, что связка $\{\neg, \vee, \wedge \}$ является полной, выразим каждую компоненту через штрих Шеффера: 
+$$ 
+X | X = \neg X \text{ - отрицание} 
+$$
+$$ 
+(X | X) | (Y | Y) = X \vee Y \text{ - дизъюнкция} 
+$$
+$$ 
+(X | Y) | (X | Y) = X \wedge Y \text{ - конъюнкция} 
+$$
+Таким образом, записав вместо$\{\neg, \vee, \wedge \}$ подстановки через штрих Шеффера, мы можем выразить любое логическое выражение. 
+\\ \\ \\ 
+
+\textbf{Задача 6} 
+\medskip\hrule\medskip
+\textsl{
+КНФ (конъюктивно нормальной формой ) называется конъюнкция дизъюнкций переменных или их отрицаний. Докажите, что любое высказывание можно выразить в виде КНФ.} \\ \\
+\textit{Решение:} Обозначим наше исходное высказывание за $X$. Так как любое высказывание выражается через ДНФ, запишем $\bar{X} = S$ в данном виде. Тогда:
+$$
+\overline{S} = \overline{s_1 \vee s_2 ... \vee s_n} = \overline{s_1} \wedge \overline{s_2} ... \wedge \overline{s_n}
+$$  
+Причем каждое $\overline{s_i}$ представляется в виде:
+$$
+\overline{s_i} = \overline{s_{i, 1} \wedge s_{i, 2} ... \wedge s_{i, m}} = \overline{s_{i, 1}} \vee \overline{s_{i, 2}} ... \vee \overline{s_{i, m}}
+$$
+Так как $X = \overline{\overline{X}} = \overline{S} \Rightarrow$ представлятся в виде КНФ.
+\\ \\ \\
+
+
+\textbf{Задача 7} 
+\medskip\hrule\medskip
+\textsl{
+Сколько ненулевых коэффицентов в многочлене Жегалкина, которых равен $x_1 \vee x_2 \vee ... \vee x_n$} \\ \\
+\textit{Решение:} 
+Ненулевых слогаемых получается $2^n - 1$. Докажем утверждение по индукции. \\ 
+1. База при $n = 1$ получаем $2^1 - 1 = 1$. Верно. \\
+2. Шаг: допустим утверждение выполняется для какого-то $n$, докажем что оно верно и для $n + 1$:
+$$
+x_1 \vee x_2 ... \vee x_{n + 1} = (x_1 \vee x_2 ... \vee x_n) \vee x_{n + 1} = (x_1 \vee x_2 ... \vee x_n)x_{n + 1} \oplus (x_1 \vee x_2 ... \vee x_n) \oplus x_{n + 1}
+$$
+Тогда количество слогаемых:
+$$
+2^n - 1 + 2^n - 1 = 2^{n + 1} - 1
+$$
+Доказано.
+\\ \\ \\
+
+
+\textbf{Задача 8} 
+\medskip\hrule\medskip
+\textsl{
+Будет ли полной система $\{\neg, MAJ(x_1, x_2, x_3)\}$?} \\ \\
+\textit{Решение:} Будем решать методом от противного. Если такая система является полной, то рассмотрим конъюнкцию элементов $x_1 = 0$ и $x_2 = 1$, $x_1 \wedge x_2 = 0$. Сделаем инверсию относительно $x_1$ и $x_2$. Заметим, что в таком случае все функции $MAJ$, в цепочке из которой состоит конъюнция,  изменят свое значение на противоложное, $\neg$ так же будет выдавать противоположное значение, так как все слагаемые перед ним изменились на противоположные $\Rightarrow$ изменится и значение, выдаваемое функцией, оно станет равно 1, что неверно. Противоречие.   
+\end{document}
